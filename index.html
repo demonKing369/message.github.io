@@ -3,59 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Contact</title>
+    <title>Contact Us via WhatsApp</title>
     <style>
-        :root {
-            --primary: #25D366; /* WhatsApp green */
-            --secondary: #128C7E;
-            --light: #f8f9fa;
-            --dark: #343a40;
-        }
-        
         body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
             margin: 0;
-            padding: 0;
-            color: var(--dark);
+            padding: 20px;
+            color: #333;
         }
         
         .container {
-            max-width: 100%;
-            padding: 20px;
-            margin: 0 auto;
-        }
-        
-        .card {
+            max-width: 600px;
+            margin: 40px auto;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            padding: 25px;
-            margin: 20px auto;
-            max-width: 500px;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        
-        .header img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 15px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         h1 {
-            color: var(--secondary);
-            margin: 0;
-            font-size: 24px;
+            color: #075E54; /* WhatsApp green dark */
+            text-align: center;
+            margin-bottom: 10px;
         }
         
         .subtitle {
+            text-align: center;
             color: #666;
-            font-size: 16px;
-            margin-top: 8px;
+            margin-bottom: 30px;
         }
         
         .form-group {
@@ -65,49 +41,47 @@
         label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 500;
-            color: #555;
+            font-weight: 600;
         }
         
-        input, textarea, select {
+        input, textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 16px;
-            transition: border 0.3s;
+            box-sizing: border-box;
         }
         
-        input:focus, textarea:focus, select:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.2);
+        textarea {
+            height: 120px;
+            resize: vertical;
         }
         
-        .btn {
-            background-color: var(--primary);
+        .whatsapp-btn {
+            background-color: #25D366;
             color: white;
             border: none;
+            padding: 15px 25px;
+            font-size: 18px;
             border-radius: 8px;
-            padding: 14px 20px;
-            font-size: 16px;
-            font-weight: 600;
-            width: 100%;
             cursor: pointer;
-            transition: background 0.3s;
+            width: 100%;
+            font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            transition: background-color 0.3s;
         }
         
-        .btn:hover {
-            background-color: var(--secondary);
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
         }
         
         .whatsapp-icon {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
         }
         
         .steps {
@@ -125,7 +99,7 @@
         }
         
         .step-number {
-            background: var(--primary);
+            background: #25D366;
             color: white;
             width: 30px;
             height: 30px;
@@ -153,86 +127,61 @@
             z-index: 0;
         }
         
-        .alternative {
+        .confirmation {
+            display: none;
             text-align: center;
+            padding: 15px;
+            background: #e8f5e9;
+            border-radius: 8px;
             margin-top: 20px;
-            color: #666;
-            font-size: 14px;
-        }
-        
-        @media (max-width: 480px) {
-            .card {
-                padding: 20px 15px;
-                margin: 15px auto;
-            }
-            
-            h1 {
-                font-size: 20px;
-            }
-            
-            .subtitle {
-                font-size: 14px;
-            }
+            color: #2e7d32;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="card">
-            <div class="header">
-                <!-- Replace with your logo or relevant icon -->
-                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384023.png" alt="WhatsApp Logo">
-                <h1>Contact Us Instantly</h1>
-                <p class="subtitle">Fill this form and your message will open in WhatsApp</p>
+        <h1>Contact Us Instantly</h1>
+        <p class="subtitle">Fill this form and your message will open in WhatsApp</p>
+        
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text">Fill the form</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text">Review details</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text">Send via WhatsApp</div>
+            </div>
+        </div>
+        
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" placeholder="Enter your full name" required>
             </div>
             
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-text">Fill form</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-text">Review</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-text">Send</div>
-                </div>
+            <div class="form-group">
+                <label for="block">Block Number</label>
+                <input type="text" id="block" placeholder="Example: Block A, 12" required>
             </div>
             
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" placeholder="Enter your full name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="block">Block Number</label>
-                    <input type="text" id="block" placeholder="E.g., Block A, 12" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="query">Your Message</label>
-                    <textarea id="query" rows="4" placeholder="Describe your query in detail" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="urgency">Urgency Level</label>
-                    <select id="urgency">
-                        <option value="normal">Normal</option>
-                        <option value="urgent">Urgent</option>
-                        <option value="emergency">Emergency</option>
-                    </select>
-                </div>
-                
-                <button type="submit" class="btn">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384023.png" class="whatsapp-icon" alt="">
-                    Open in WhatsApp
-                </button>
-            </form>
+            <div class="form-group">
+                <label for="query">Your Message</label>
+                <textarea id="query" placeholder="Please describe your query in detail..." required></textarea>
+            </div>
             
-            <p class="alternative">Don't have WhatsApp? Call us at <strong>+91 9791778491</strong></p>
+            <button type="submit" class="whatsapp-btn">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384023.png" class="whatsapp-icon" alt="">
+                Open in WhatsApp
+            </button>
+        </form>
+        
+        <div id="confirmation" class="confirmation">
+            ✓ Form submitted successfully! WhatsApp should open automatically.
         </div>
     </div>
 
@@ -244,20 +193,29 @@
             const name = document.getElementById('name').value;
             const block = document.getElementById('block').value;
             const query = document.getElementById('query').value;
-            const urgency = document.getElementById('urgency').value;
             
             // Format the message
-            const message = `*New Contact Request*%0A%0A` +
+            const message = `*Contact Form Submission*%0A%0A` +
                            `*Name:* ${encodeURIComponent(name)}%0A` +
-                           `*Block:* ${encodeURIComponent(block)}%0A` +
-                           `*Urgency:* ${encodeURIComponent(urgency)}%0A%0A` +
+                           `*Block:* ${encodeURIComponent(block)}%0A%0A` +
                            `*Message:*%0A${encodeURIComponent(query)}`;
             
             // Replace with your WhatsApp number (with country code, no + or 00)
-            const whatsappNumber = '+91 9791778491';
+            const whatsappNumber = '1234567890';
             
-            // Open WhatsApp
-            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+            // Show confirmation
+            document.getElementById('confirmation').style.display = 'block';
+            
+            // Scroll to confirmation
+            document.getElementById('confirmation').scrollIntoView({ behavior: 'smooth' });
+            
+            // Open WhatsApp after short delay
+            setTimeout(() => {
+                window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+            }, 500);
+            
+            // Optional: Reset form
+            // this.reset();
         });
     </script>
 </body>
